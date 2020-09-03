@@ -26,6 +26,9 @@ class Finder():
 
     # runs in O(N)
     def find(self, needle):
+        if not isinstance(needle, str):
+            raise TypeError
+
         needle, needle_dict = Finder._string2dict(needle)
         found = []
         for string, adict in self._haystack:
