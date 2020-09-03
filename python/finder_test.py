@@ -39,3 +39,13 @@ class FinderTests(unittest.TestCase):
         with raises(TypeError):
             finder = Finder(string_list)
             assert finder.find('asd') == ['asd']
+
+    def test_large_constructor_list(self):
+        large_list = ['abc' for i in range(0,1000000)]
+        finder = Finder(large_list)
+        assert finder.find('abc') == large_list
+
+    def test_large_haystack_single_needle(self):
+        large_list = [str(i) for i in range(0,1000000)]
+        finder = Finder(large_list)
+        assert finder.find('123') == ['123', '132', '213', '231', '312', '321']
