@@ -54,3 +54,7 @@ class FinderTests(unittest.TestCase):
         large_list = [str(i) for i in range(0,1000000)]
         finder = Finder(large_list)
         assert finder.find('a') == []
+
+    def test_empty_constructor(self):
+        finder = Finder([])
+        assert finder.find('a') == []
