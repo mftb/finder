@@ -49,3 +49,8 @@ class FinderTests(unittest.TestCase):
         large_list = [str(i) for i in range(0,1000000)]
         finder = Finder(large_list)
         assert finder.find('123') == ['123', '132', '213', '231', '312', '321']
+
+    def test_not_found(self):
+        large_list = [str(i) for i in range(0,1000000)]
+        finder = Finder(large_list)
+        assert finder.find('a') == []
