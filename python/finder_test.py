@@ -33,10 +33,13 @@ class FinderTests(unittest.TestCase):
         for i in range(1, 1000):
             string_list = [str(x) for x in range(0, i)]
             finder = Finder(string_list)
-            if i <= 100:
-                assert finder.find('100') == []
-            else:
+            if i > 10:
+                for n in range(0, 9):
+                    assert finder.find(str(n)) == [str(n)]
+            elif i > 100:
                 assert finder.find('100') == ['100']
+            else:
+                assert finder.find('100') == []
 
     # corner case tests
 
