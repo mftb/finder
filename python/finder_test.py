@@ -5,6 +5,7 @@ from pytest import raises
 
 class FinderTests(unittest.TestCase):
     # basic tests
+
     def test_sanity_check(self):
         string_list = ['asd', 'asdd', 'fre', 'glk', 'lkm']
         finder = Finder(string_list)
@@ -21,6 +22,21 @@ class FinderTests(unittest.TestCase):
         large_list = [str(i) for i in range(0, 1000000)]
         finder = Finder(large_list)
         assert finder.find('123') == ['123', '132', '213', '231', '312', '321']
+
+    def test_lots_of_sanity_checks(self):
+        for i in range(0, 1000000):
+            string_list = ['asd', 'asdd', 'fre', 'glk', 'lkm']
+            finder = Finder(string_list)
+            assert finder.find('sad') == ['asd']
+
+    def test_quadratic_increases(self):
+        for i in range(1, 1000):
+            string_list = [str(x) for x in range(0, i)]
+            finder = Finder(string_list)
+            if i <= 100:
+                assert finder.find('100') == []
+            else:
+                assert finder.find('100') == ['100']
 
     # corner case tests
 
