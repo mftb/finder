@@ -5,7 +5,7 @@ class Finder():
             raise TypeError
 
         # lets build a dict which groups each string in haystack by their
-        # size in listas of tuples containing both the string
+        # size in lists of tuples containing both the string
         # and its char frequency dictionary
         self._haystack = {}
         for x in haystack:
