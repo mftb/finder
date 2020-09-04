@@ -4,8 +4,9 @@ class Finder():
         if not isinstance(haystack, list):
             raise TypeError
 
-        # lets build a list of tuples containing both the string
-        # and its char frequency dictionary for each string in haystack
+        # lets build a dict which groups each string in haystack by their
+        # size in listas of tuples containing both the string
+        # and its char frequency dictionary
         self._haystack = {}
         for x in haystack:
             if len(x) not in self._haystack:
