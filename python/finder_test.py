@@ -18,28 +18,78 @@ class FinderTests(unittest.TestCase):
         finder = Finder(large_list)
         assert finder.find('abc') == large_list
 
-    def test_large_haystack_single_needle(self):
+    def test_10000_large_haystack_single_needle(self):
+        large_list = [str(i) for i in range(0, 10000)]
+        finder = Finder(large_list)
+        assert finder.find('123') == ['123', '132', '213', '231', '312', '321']
+
+    def test_100000_large_haystack_single_needle(self):
+        large_list = [str(i) for i in range(0, 100000)]
+        finder = Finder(large_list)
+        assert finder.find('123') == ['123', '132', '213', '231', '312', '321']
+
+    def test_1000000_large_haystack_single_needle(self):
         large_list = [str(i) for i in range(0, 1000000)]
         finder = Finder(large_list)
         assert finder.find('123') == ['123', '132', '213', '231', '312', '321']
 
-    def test_lots_of_sanity_checks(self):
-        for i in range(0, 1000000):
-            string_list = ['asd', 'asdd', 'fre', 'glk', 'lkm']
-            finder = Finder(string_list)
+    def test_10_sanity_checks(self):
+        string_list = ['asd', 'asdd', 'fre', 'glk', 'lkm']
+        finder = Finder(string_list)
+        for i in range(0, 10):
             assert finder.find('sad') == ['asd']
 
-    def test_quadratic_increases(self):
-        for i in range(1, 1000):
-            string_list = [str(x) for x in range(0, i)]
-            finder = Finder(string_list)
-            if i > 10:
-                for n in range(0, 9):
-                    assert finder.find(str(n)) == [str(n)]
-            elif i > 100:
-                assert finder.find('100') == ['100']
-            else:
-                assert finder.find('100') == []
+    def test_100_sanity_checks(self):
+        string_list = ['asd', 'asdd', 'fre', 'glk', 'lkm']
+        finder = Finder(string_list)
+        for i in range(0, 100):
+            assert finder.find('sad') == ['asd']
+
+    def test_1000_sanity_checks(self):
+        string_list = ['asd', 'asdd', 'fre', 'glk', 'lkm']
+        finder = Finder(string_list)
+        for i in range(0, 100):
+            assert finder.find('sad') == ['asd']
+
+    def test_large_haystack_single_needle_10_finds(self):
+        large_list = [str(i) for i in range(0, 10000)]
+        finder = Finder(large_list)
+        for n in range(0, 10):
+            assert finder.find('123') == [
+                '123', '132', '213', '231', '312', '321'
+            ]
+            assert finder.find('1111') == ['1111']
+            assert finder.find('2222') == ['2222']
+
+    def test_large_haystack_single_needle_100_finds(self):
+        large_list = [str(i) for i in range(0, 10000)]
+        finder = Finder(large_list)
+        for n in range(0, 100):
+            assert finder.find('123') == [
+                '123', '132', '213', '231', '312', '321'
+            ]
+            assert finder.find('1111') == ['1111']
+            assert finder.find('2222') == ['2222']
+
+    def test_large_haystack_single_needle_1000_finds(self):
+        large_list = [str(i) for i in range(0, 10000)]
+        finder = Finder(large_list)
+        for n in range(0, 1000):
+            assert finder.find('123') == [
+                '123', '132', '213', '231', '312', '321'
+            ]
+            assert finder.find('1111') == ['1111']
+            assert finder.find('2222') == ['2222']
+
+    def test_large_haystack_single_needle_10000_finds(self):
+        large_list = [str(i) for i in range(0, 10000)]
+        finder = Finder(large_list)
+        for n in range(0, 10000):
+            assert finder.find('123') == [
+                '123', '132', '213', '231', '312', '321'
+            ]
+            assert finder.find('1111') == ['1111']
+            assert finder.find('2222') == ['2222']
 
     # corner case tests
 
