@@ -13,7 +13,7 @@ source venv3/bin/activate
 cd python
 source venv3/bin/activate
 pip install -r dev-requirements.txt
-pytest --cov
+pytest --durations=0
 ```
 
 ## Check for PEP8 linting
