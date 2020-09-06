@@ -1,21 +1,5 @@
 class Finder():
-    # runs in O(N*M)
-    def __init__(self, haystack):
-        if not isinstance(haystack, list):
-            raise TypeError
-
-        # lets build a dict which groups each string in haystack by their
-        # size in lists of tuples containing both the string
-        # and its char frequency dictionary
-        self._haystack = {}
-        for x in haystack:
-            if len(x) not in self._haystack:
-                self._haystack[len(x)] = [Finder._string2dict(x)]
-            else:
-                self._haystack[len(x)].append(Finder._string2dict(x))
-
     # returns a tuple with the input string and its char frequency dict
-    # runs in O(N)
     @staticmethod
     def _string2dict(string):
         if not isinstance(string, str):
@@ -30,7 +14,19 @@ class Finder():
 
         return (string, adict)
 
-    # runs in O(N)
+    def __init__(self, haystack):
+        if not isinstance(haystack, list):
+            raise TypeError
+
+        # lets build a dict which groups strings in haystack by their
+        # size in lists of tuples containing both the string
+        # and its char frequency dictionary
+        self._haystack = {}
+        for x in haystack:
+            if len(x) not in self._haystack:
+                self._haystack[len(x)] = []
+            self._haystack[len(x)].append(Finder._string2dict(x))
+
     def find(self, needle):
         if not isinstance(needle, str):
             raise TypeError
