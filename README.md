@@ -31,6 +31,3 @@ virtualenv venv3 -p python3.7
 source venv3/bin/activate
 python demo.py
 ```
-
-# Big Data
-[Solution Description](https://docs.google.com/document/d/1Io5rWqaCnKasAFAW2xRw0WWMQ5-hruKQBzL62VhYIb8/edit?usp=sharing)
